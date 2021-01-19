@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private Button mTrueButton, mFalseButton, mNextButton;
+    private Button mTrueButton, mFalseButton, mPrevButton, mNextButton;
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -52,6 +52,15 @@ public class QuizActivity extends AppCompatActivity {
                  @Override
             public void onClick(View v) {
                 checkUserAnswer(false);
+            }
+        });
+
+        mPrevButton = findViewById(R.id.prev_button);
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = mCurrentIndex == 0 ? mQuestionBank.length - 1 : mCurrentIndex - 1;
+                updateQuestion();
             }
         });
 
