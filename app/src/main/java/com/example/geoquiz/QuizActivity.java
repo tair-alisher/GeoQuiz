@@ -3,6 +3,7 @@ package com.example.geoquiz;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,16 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private Button mTrueButton, mFalseButton, mPrevButton, mNextButton;
+    private ImageButton mPrevButton, mNextButton;
+    private Button mTrueButton, mFalseButton;
     private TextView mQuestionTextView;
 
-    private Question[] mQuestionBank = new Question[] {
-        new Question(R.string.question_australia, true),
-        new Question(R.string.question_oceans, true),
-        new Question(R.string.question_mideast, false),
-        new Question(R.string.question_africa, false),
-        new Question(R.string.question_americas, true),
-        new Question(R.string.question_asia, true)
+    private Question[] mQuestionBank = new Question[]{
+            new Question(R.string.question_australia, true),
+            new Question(R.string.question_oceans, true),
+            new Question(R.string.question_mideast, false),
+            new Question(R.string.question_africa, false),
+            new Question(R.string.question_americas, true),
+            new Question(R.string.question_asia, true)
     };
 
     private int mCurrentIndex = 0;
@@ -49,7 +51,7 @@ public class QuizActivity extends AppCompatActivity {
 
         mFalseButton = findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener() {
-                 @Override
+            @Override
             public void onClick(View v) {
                 checkUserAnswer(false);
             }
